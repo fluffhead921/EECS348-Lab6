@@ -58,6 +58,27 @@ int** addMatrices(int **matrixA, int **matrixB) {
     return matrixC;
 }
 
+int** multMatrices(int **matrixA, int **matrixB) {
+    //initialize matrixC
+    int **matrixC;
+    matrixC = new int *[matrixSize];
+    for(int i = 0; i < matrixSize; i++) {
+        matrixC[i] = new int[matrixSize];
+    }
+
+    //perform matrix multiplication
+    for (int i = 0; i < matrixSize; i++) {
+        for (int j = 0; j < matrixSize; j++) {
+            matrixC[i][j] = 0;
+            for (int k = 0; k < matrixSize; k++) {
+                matrixC[i][j] += matrixA[i][k] * matrixB[k][j];
+            }
+        }
+    }
+
+    return matrixC;
+}
+
 int main() {
     string fileName;
     int **matrix1;
@@ -90,5 +111,10 @@ int main() {
     //add matrices
     matrix3 = addMatrices(matrix1, matrix2);
     printf("Matrix 1 + Matrix 2:\n");
+    printMatrix(matrix3);
+
+    //multiply matrices
+    matrix3 = multMatrices(matrix1, matrix2);
+    printf("Matrix 1 * Matrix 2:\n");
     printMatrix(matrix3);
 }
