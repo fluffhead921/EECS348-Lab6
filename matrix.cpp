@@ -97,6 +97,65 @@ int** subMatrices(int **matrixA, int **matrixB) {
     return matrixC;
 }
 
+void updateMatrix(int **matrix) {
+    int row = matrixSize;
+    int col = matrixSize;
+    int val;
+    string input;
+
+    //ensure valid row
+    while (!(row < matrixSize && row >= 0)) {
+        printf("Enter a row number (1 to %d): ", matrixSize);
+        cin >> input;
+        try {
+            row = stoi(input) - 1;
+            if (!(row < matrixSize && row >= 0)) {
+                throw (row);
+            }
+        }
+        catch (int num) {
+            printf("%d is not in allowed range\n", num);
+        }
+        catch (invalid_argument) {
+            printf("Row number must be an integer\n");
+        }
+    }
+
+    //ensure valid column
+    while (!(col < matrixSize && col >= 0)) {
+        printf("Enter a column number (1 to %d): ", matrixSize);
+        cin >> input;
+        try {
+            col = stoi(input) - 1;
+            if (!(col < matrixSize && col >= 0)) {
+                throw (col);
+            }
+        }
+        catch (int num) {
+            printf("%d is not in allowed range\n", num);
+        }
+        catch (invalid_argument) {
+            printf("Column number must be an integer\n");
+        }
+    }
+
+    //ensure valid replacement value
+    while (1) {
+        printf("Enter the replacement value: ");
+        cin >> input;
+        try {
+            val = stoi(input);
+            break;
+        }
+        catch (invalid_argument) {
+            printf("Value must be an integer\n");
+        }
+    }
+
+    //update value
+    matrix[row][col] = val;
+}
+
 int main() {
     string fileName;
     int **matrix1;
@@ -140,4 +199,10 @@ int main() {
     matrix3 = subMatrices(matrix1, matrix2);
     printf("Matrix 1 - Matrix 2:\n");
     printMatrix(matrix3);
+
+    //update matrix
+    printf("Update a value in Matrix 1\n");
+    updateMatrix(matrix1);
+    printf("\nUpdated Matrix 1:\n");
+    printMatrix(matrix1);
 }
