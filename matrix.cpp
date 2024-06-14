@@ -79,6 +79,24 @@ int** multMatrices(int **matrixA, int **matrixB) {
     return matrixC;
 }
 
+int** subMatrices(int **matrixA, int **matrixB) {
+    //initialize matrixC
+    int **matrixC;
+    matrixC = new int *[matrixSize];
+    for(int i = 0; i < matrixSize; i++) {
+        matrixC[i] = new int[matrixSize];
+    }
+
+    //perform matrix addition
+    for (int i = 0; i < matrixSize; i++) {
+        for (int j = 0; j < matrixSize; j++) {
+            matrixC[i][j] = matrixA[i][j] - matrixB[i][j];
+        }
+    }
+
+    return matrixC;
+}
+
 int main() {
     string fileName;
     int **matrix1;
@@ -116,5 +134,10 @@ int main() {
     //multiply matrices
     matrix3 = multMatrices(matrix1, matrix2);
     printf("Matrix 1 * Matrix 2:\n");
+    printMatrix(matrix3);
+
+    //subtract matrices
+    matrix3 = subMatrices(matrix1, matrix2);
+    printf("Matrix 1 - Matrix 2:\n");
     printMatrix(matrix3);
 }
