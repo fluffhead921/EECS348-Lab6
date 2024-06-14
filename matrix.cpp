@@ -37,12 +37,32 @@ void printMatrix(int **matrix) {
         }
         printf("\n");
     }
+    printf("\n");
+}
+
+int** addMatrices(int **matrixA, int **matrixB) {
+    //initialize matrixC
+    int **matrixC;
+    matrixC = new int *[matrixSize];
+    for(int i = 0; i < matrixSize; i++) {
+        matrixC[i] = new int[matrixSize];
+    }
+
+    //perform matrix addition
+    for (int i = 0; i < matrixSize; i++) {
+        for (int j = 0; j < matrixSize; j++) {
+            matrixC[i][j] = matrixA[i][j] + matrixB[i][j];
+        }
+    }
+
+    return matrixC;
 }
 
 int main() {
     string fileName;
     int **matrix1;
     int **matrix2;
+    int **matrix3;
 
     //get file name and open
     printf("Enter matrix file name: ");
@@ -62,7 +82,13 @@ int main() {
     inputFile.close();
 
     //print matrices
+    printf("Matrix 1:\n");
     printMatrix(matrix1);
-    printf("\n");
+    printf("Matrix 2:\n");
     printMatrix(matrix2);
+
+    //add matrices
+    matrix3 = addMatrices(matrix1, matrix2);
+    printf("Matrix 1 + Matrix 2:\n");
+    printMatrix(matrix3);
 }
