@@ -24,9 +24,7 @@ int** readMatrix(int matrixSize) {
         for (int j = 0; j < matrixSize; j++) {
             getline(stream, element, ' ');
             matrix[i][j] = stoi(element);
-            printf("%d ", matrix[i][j]);
         }
-        printf("\n");
     }
     return matrix;
 }
@@ -48,7 +46,6 @@ int main() {
 
     printf("Matrix Size: %d\n", size);
     matrix1 = readMatrix(size);
-    printf("\n");
     matrix2 = readMatrix(size);
 
     inputFile.close();
