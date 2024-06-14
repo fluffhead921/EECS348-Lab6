@@ -7,8 +7,9 @@ using namespace std;
 
 string currLine;
 fstream inputFile;
+int matrixSize;
 
-int** readMatrix(int matrixSize) {
+int** readMatrix() {
     //initialize matrix
     int **matrix;
     matrix = new int *[matrixSize];
@@ -31,7 +32,6 @@ int** readMatrix(int matrixSize) {
 
 int main() {
     string fileName;
-    int size;
     int **matrix1;
     int **matrix2;
 
@@ -42,11 +42,11 @@ int main() {
 
     //get matrix size from first line of file
     getline(inputFile, currLine);
-    size = stoi(currLine);
+    matrixSize = stoi(currLine);
 
-    printf("Matrix Size: %d\n", size);
-    matrix1 = readMatrix(size);
-    matrix2 = readMatrix(size);
+    printf("Matrix Size: %d\n", matrixSize);
+    matrix1 = readMatrix();
+    matrix2 = readMatrix();
 
     inputFile.close();
 }
