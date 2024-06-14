@@ -172,6 +172,24 @@ int maxValue(int **matrix) {
     return max;
 }
 
+int** transposeMatrix(int **matrix) {
+    //initialize transpose matrix
+    int **matrixT;
+    matrixT = new int *[matrixSize];
+    for(int i = 0; i < matrixSize; i++) {
+        matrixT[i] = new int[matrixSize];
+    }
+
+    //fill transpose matrix
+    for (int i = 0; i < matrixSize; i++) {
+        for (int j = 0; j < matrixSize; j++) {
+            matrixT[i][j] = matrix[j][i];
+        }
+    }
+
+    return matrixT;
+}
+
 int main() {
     string fileName;
     int **matrix1;
@@ -224,4 +242,9 @@ int main() {
 
     //find maximum
     printf("Max value in Matrix 1: %d\n\n", maxValue(matrix1));
+
+    //transpose matrix
+    printf("Matrix 1 Transposed:\n");
+    matrix3 = transposeMatrix(matrix1);
+    printMatrix(matrix3);
 }
