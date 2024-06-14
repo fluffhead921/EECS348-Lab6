@@ -156,6 +156,22 @@ void updateMatrix(int **matrix) {
     matrix[row][col] = val;
 }
 
+int maxValue(int **matrix) {
+    //initialize maximum to element 00
+    int max = matrix[0][0];
+
+    //update max
+    for (int i = 0; i < matrixSize; i++) {
+        for (int j = 0; j < matrixSize; j++) {
+            if (matrix[i][j] > max) {
+                max = matrix[i][j];
+            }
+        }
+    }
+
+    return max;
+}
+
 int main() {
     string fileName;
     int **matrix1;
@@ -205,4 +221,7 @@ int main() {
     updateMatrix(matrix1);
     printf("\nUpdated Matrix 1:\n");
     printMatrix(matrix1);
+
+    //find maximum
+    printf("Max value in Matrix 1: %d\n\n", maxValue(matrix1));
 }
