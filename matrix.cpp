@@ -30,6 +30,15 @@ int** readMatrix() {
     return matrix;
 }
 
+void printMatrix(int **matrix) {
+    for (int i = 0; i < matrixSize; i++) {
+        for (int j = 0; j < matrixSize; j++) {
+            printf("%d\t", matrix[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 int main() {
     string fileName;
     int **matrix1;
@@ -44,9 +53,16 @@ int main() {
     getline(inputFile, currLine);
     matrixSize = stoi(currLine);
 
-    printf("Matrix Size: %d\n", matrixSize);
+    printf("\nMatrix Size: %d\n\n", matrixSize);
+
+    //store two matrices
     matrix1 = readMatrix();
     matrix2 = readMatrix();
 
     inputFile.close();
+
+    //print matrices
+    printMatrix(matrix1);
+    printf("\n");
+    printMatrix(matrix2);
 }
